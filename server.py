@@ -18,9 +18,13 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 
 import quotes_data
+from mcp.server.transport_security import TransportSecuritySettings
 
 mcp = FastMCP(
     name="remote_quotes",
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=False
+    ),
     instructions=(
         "A remote MCP server that provides famous and motivational quotes. "
         "Use obtener_frase_del_dia for a random daily quote, buscar_frases "
